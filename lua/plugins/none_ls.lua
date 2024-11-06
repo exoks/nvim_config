@@ -1,4 +1,4 @@
---[[ great pluging for linting & formatting ]]
+--[[ great pluging for management of linter & formatter as part from lsp ]]
 return {
   {
     "nvimtools/none-ls.nvim",
@@ -9,11 +9,16 @@ return {
       null_ls.setup({
         sources = {
           -- [[ adding the list of linter & formatter, use Mason to install them ]]--
-          --[ lua ]--
+          -- [ lua ] --
           null_ls.builtins.formatting.stylua,
 
           -- [[ python ]]--
-          null_ls.builtins.diagnostics.pylint, -- or use pylint it's also a linter
+          null_ls.builtins.diagnostics.pylint.with({
+            -- load pytlin_djanog plugin, !! install it via pip not Mason
+            -- also there falke8_django
+            extra_args = { "--load-plugins=pylint_django" } 
+          }),
+          -- pylint/flake8 is not loading
           null_ls.builtins.formatting.black,
 
           --[[ html/css ]]
@@ -22,7 +27,7 @@ return {
           null_ls.builtins.diagnostics.markuplint,
           -- these linter doesnot work for me
           -- null_ls.builtins.diagnostics.htmlhint,
-          -- null_ls.builtins.diagnostics.stylelint,
+          -- null_ls.builtins.diagnostics.stlelint,
 
           -- [[ C/C++ ]]--
           -- for c/c++ i'm using the built-in linter & formater of clangd  

@@ -3,7 +3,7 @@ return {
     'akinsho/toggleterm.nvim',
     config = function ()
       require("toggleterm").setup{
-        size = 20,  -- Set the size of the terminal
+        size = 17,  -- Set the size of the terminal
         open_mapping = [[<C-l>]],  -- Key mapping to toggle terminal
         direction = 'float',  -- Set direction to floating
         float_opts = {
