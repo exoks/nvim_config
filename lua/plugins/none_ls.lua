@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/11/06 14:39:02 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/11/06 14:39:04 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/11/08 14:48:37 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -14,49 +14,51 @@
 
 --[[ great pluging for management of linter & formatter as part from lsp ]]
 return {
-  {
-    "nvimtools/none-ls.nvim",
-    config = function()
-      -- [[ Put the var into a local var ]]--
-      local null_ls = require("null-ls")
+	{
 
-      null_ls.setup({
-        sources = {
-          -- [[ adding the list of linter & formatter, use Mason to install them ]]--
-          -- [ lua ] --
-          null_ls.builtins.formatting.stylua,
+		"nvimtools/none-ls.nvim",
+		config = function()
+			-- [[ Put the var into a local var ]]--
+			local null_ls = require("null-ls")
 
-          -- [[ python ]]--
-          null_ls.builtins.diagnostics.pylint.with({
-            -- load pytlin_djanog plugin, !! install it via pip not Mason
-            -- also there falke8_django
-            extra_args = {
-              "--load-plugins=pylint_django",
-              "--help-msg=django-not-configured",
-            }
-          }),
-          -- pylint/flake8 is not loading
-          null_ls.builtins.formatting.black,
+			null_ls.setup({
+				sources = {
+					-- [[ adding the list of linter & formatter, use Mason to install them ]]--
+					-- [ lua ] --
+					null_ls.builtins.formatting.stylua,
 
-          --[[ html/css ]]
-          -- dak l mouchkil l austori: sbabo l error li taywqa3 fi loading dyal cpplint ^
-          null_ls.builtins.formatting.prettier,
-          null_ls.builtins.diagnostics.markuplint,
-          -- these linter doesnot work for me
-          -- null_ls.builtins.diagnostics.htmlhint,
-          -- null_ls.builtins.diagnostics.stlelint,
+					-- [[ python ]]--
+					null_ls.builtins.diagnostics.pylint.with({
+						-- load pytlin_djanog plugin, !! install it via pip not Mason
+						-- also there falke8_django
+						extra_args = {
+							"--load-plugins=pylint_django",
+							"--help-msg=django-not-configured",
+						},
+					}),
+					-- pylint/flake8 is not loading
+					-- null_ls.builtins.formatting.black,
 
-          -- [[ C/C++ ]]--
-          -- for c/c++ i'm using the built-in linter & formater of clangd
-          -- null_ls.builtins.formatting.clang_format,
-          -- null_ls.builtins.diagnostics.cpplint,
-          --
-          -- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
-        },
-      })
-      vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, {})
-    end,
-  },
+					--[[ html/css ]]
+					-- dak l mouchkil l austori: sbabo l error li taywqa3 fi loading dyal cpplint ^
+					null_ls.builtins.formatting.prettier,
+					null_ls.builtins.diagnostics.markuplint,
+					-- these linter does not work for me
+					-- null_ls.builtins.diagnostics.htmlhint,
+					-- null_ls.builtins.diagnostics.stlelint,
+
+					-- [[ C/C++ ]]--
+					-- for c/c++ i'm using the built-in linter & formater of clangd
+					-- null_ls.builtins.formatting.clang_format,
+					-- null_ls.builtins.diagnostics.cpplint,
+					--
+					-- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
+				},
+			})
+
+			vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, {})
+		end,
+	},
 }
 
 --[[ Questions ]]
