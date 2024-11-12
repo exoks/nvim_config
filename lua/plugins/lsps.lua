@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/11/06 14:38:35 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/11/11 10:05:20 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/11/12 07:57:45 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -13,71 +13,74 @@
 --  ⠀⠀⠀⠀⠀⠘⠄⣀⡀⠸⠓⠀⠀⠀⠠⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              --
 
 return {
-	{
-		"williamboman/mason.nvim",
-		-- It gives an UI for lsps/ we can use mason dashboard to add lsps --
-		config = function()
-			require("mason").setup()
-		end,
-	},
   {
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
-				-- Ensure these language servers are exist--
-				ensure_installed = {
-        --"clangd",
-					"pylsp",
-					"lua_ls",
-					"html",
-				},
-			})
-		end,
-	},
-	{
-		-- Set up the communication between Neovim and these lisps --
-		"neovim/nvim-lspconfig",
-		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local lspconfig = require("lspconfig")
+    "williamboman/mason.nvim",
+    -- It gives an UI for lsps/ we can use mason dashboard to add lsps --
+    config = function()
+      require("mason").setup()
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup({
+        -- Ensure these language servers are exist--
+        ensure_installed = {
+          --"clangd",
+          "pylsp",
+          "lua_ls",
+          "html",
+        },
+      })
+    end,
+  },
+  {
+    -- Set up the communication between Neovim and these lisps --
+    "neovim/nvim-lspconfig",
+    config = function()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local lspconfig = require("lspconfig")
 
-			lspconfig.pylsp.setup({
-				capabilities = capabilities,
-				settings = {
-					pylsp = {
-						-- this part can config anything about pylsp(plugins)
-						plugins = {
-							-- adding pylsp_django plugin for pylsp/plugin in python for django --
-							pylsp_django = { enabled = true },
-							jedi_completion = { fuzzy = true },
-							jedi_definition = { follow_builtin_imports = true },
-							-- [[ this part is managed by none-ls plugin, use it with linters & formatter ]]---
-							-- I can also manage linter & formater from here, but it's good too
-							-- manage them via Mason
-							-- pylint = { enabled = true },
-							-- flake8 = { enabled = true },
-						},
-					},
-				},
-			})
-			lspconfig.html.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.nginx_language_server.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-			})
-			-- We have a set of function to communicate with 'lsps', h: vim.lsp.buff -> displays all functions --
-			vim.keymap.set("n", "D", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-		end,
-	},
+      lspconfig.pylsp.setup({
+        capabilities = capabilities,
+        settings = {
+          pylsp = {
+            -- this part can config anything about pylsp(plugins)
+            plugins = {
+              -- adding pylsp_django plugin for pylsp/plugin in python for django --
+              pylsp_django = { enabled = true },
+              jedi_completion = { fuzzy = true },
+              jedi_definition = { follow_builtin_imports = true },
+              -- [[ this part is managed by none-ls plugin, use it with linters & formatter ]]---
+              -- I can also manage linter & formater from here, but it's good too
+              -- manage them via Mason
+              -- pylint = { enabled = true },
+              -- flake8 = { enabled = true },
+            },
+          },
+        },
+      })
+      lspconfig.html.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.nginx_language_server.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.ts_ls.setup({
+        capabilities = capabilities,
+      })
+      --		lspconfig.clangd.setup({
+      --			capabilities = capabilities,
+      --		})
+      -- We have a set of function to communicate with 'lsps', h: vim.lsp.buff -> displays all functions --
+      vim.keymap.set("n", "D", vim.lsp.buf.hover, {})
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+    end,
+  },
 }
 
 -- [[ lsp: language server protocol ]]--
