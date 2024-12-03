@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/11/06 14:45:33 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/02 21:16:04 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/03 16:49:22 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -24,7 +24,12 @@ vim.o.relativenumber = true     -- enable relative line
 vim.o.clipboard = "unnamedplus" -- clipboard with os
 vim.o.autoindent = true         -- copy indent from current line
 
--- Bootstrap lazy.nvim --
+vim.keymap.set('n', 'c-k', ":wincmd k<CR>")
+vim.keymap.set('n', 'c-j', ":wincmd j<CR>")
+vim.keymap.set('n', 'c-l', ":wincmd l<CR>")
+vim.keymap.set('n', 'c-h', ":wincmd h<CR>")
+
+  -- Bootstrap lazy.nvim --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -58,7 +63,8 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup("plugins")
 
 -- Setting keymaps --
-vim.keymap.set("n", "<C-h>", ":Lazy<CR>")
+vim.keymap.set("n", "<leader>h", ":Lazy<CR>")
+vim.keymap.set('n', '<leader>m', ":Mason<CR>")
 -- vim.opt.cursorline = true
 -- for some reason this keymaping is not working, when you are free try to find the reason why?
 -- Note: the shortcut C-w is used to remove the whole word
