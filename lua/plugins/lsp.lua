@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/11/06 14:38:35 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/02 21:58:51 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/16 22:48:25 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -21,9 +21,6 @@ return {
       mason.setup({
         debug = true,
       })
-      -- mason.ensure_installed({
-      --   "pylint",
-      -- })
     end,
   },
   {
@@ -54,6 +51,7 @@ return {
             -- this part can config anything about pylsp(plugins)
             plugins = {
               -- adding pylsp_django plugin for pylsp/plugin in python for django --
+              djlint = {enabled = true},
               pylsp_django = { enabled = true },
               jedi_completion = { fuzzy = true },
               jedi_definition = { follow_builtin_imports = true },
@@ -61,7 +59,7 @@ return {
               -- I can also manage linter & formater from here, but it's good too
               -- manage them via Mason
               -- pylint = { enabled = true },
-              -- flake8 = { enabled = true },
+              flake8 = { enabled = true },
             },
           },
         },

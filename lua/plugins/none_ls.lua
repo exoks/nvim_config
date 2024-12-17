@@ -4,8 +4,8 @@
 --  ⠀⠀⠀⣀⣎⢤⣶⣾⠅⠀⠀⢀⡤⠏⠀⠀⠀⠠⣄⣈⡙⠻⢿⣿⣿⣿⣿⣿⣦⠀   Student: oezzaou <oezzaou@student.1337.ma> --
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
---  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/11/06 14:39:02 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/02 21:35:57 by oezzaou--
+--  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 202411/06 14:39:02 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/16 22:07:56 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -38,17 +38,19 @@ return {
         -- [ lua ] --
         null_ls.builtins.formatting.stylua,
 
-        null_ls.builtins.completion.spell,
+        -- null_ls.builtins.completion.spell,
         -- [[ python ]]--
-        null_ls.builtins.diagnostics.pylint.with({
-          extra_args = {
-            "--load-plugins=pylint_django",
-            "--help-msg=django-not-configured",
-          },
-        }),
-        -- pylint/flake8 is not loading
-        -- null_ls.builtins.formatting.black,
-
+        -- null_ls.builtins.diagnostics.pylint.with({
+        --   extra_args = {
+        --     "--load-plugins=pylint_django",
+        --     "--help-msg=django-not-configured",
+        --     "--max-line-length=80",
+        --   },
+        -- }),
+        -- Black formatter (auto-formats code)
+        -- null_ls.builtins.formatting.black.with({
+        --   extra_args = { "--line-length", "80" }, -- Customize black's line length as well
+        -- }),
         --[[ html/css ]]
         -- dak l mouchkil l austori: sbabo l error li taywqa3 fi loading dyal cpplint ^
         -- these linter does not work for me
@@ -63,6 +65,7 @@ return {
         -- [[ js/ts/html ]] --
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.diagnostics.markuplint,
+        null_ls.builtins.formatting.djlint,
         -- null_ls.builtins.diagnostics.eslint_d,
         -- null_ls.builtins.code_actions.eslint_d,
         -- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim

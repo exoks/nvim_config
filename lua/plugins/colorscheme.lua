@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/11/06 14:43:44 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/02 22:00:43 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/17 09:29:31 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                     𓆩♕𓆪              --
@@ -25,13 +25,24 @@ return {
   -- "catppuccin/nvim",
   -- name = "catppuccin",
   -- priority = 1000,
+  -- ===<[ solarized-osaka config: ]>=======================
+  -- "craftzdog/solarized-osaka.nvim",
+  -- lazy = false,
+  -- priority = 1000,
+  -- opts = {},
+  -- config = function()
+  --   vim.cmd.colorscheme("solarized-osaka")
+  --   require("solarized-osaka").setup({
+  --     transparent = true,
+  --   })
+  -- end
+  -- ===<[ tokyonight config: ]>============================
   "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
   opts = {},
   transparent = true,
   config = function()
-    -- vim.cmd.colorscheme "catppuccin-mocha"
     vim.cmd.colorscheme("tokyonight-night")
     vim.api.nvim_set_keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
     vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
@@ -41,5 +52,6 @@ return {
   end,
 }
 
--- [ Note ] --
+-- CONCLUSION: 
 -- catppuccin does not support the Macos terminal
+-- it only support iterm & pay attention to the config file
