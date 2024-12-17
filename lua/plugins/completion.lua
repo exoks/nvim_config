@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/11/06 14:38:23 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/17 09:17:47 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/17 09:56:22 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -47,7 +47,7 @@ return {
           -- Function called when the snippest is choosen --
           expand = function(args)
             -- vim.fn["vsnip#anonymous"](args.body) -- for vsnip userse
-            require("luasnip").lsp_expand(args.body)   -- For `luasnip` users.
+            require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
           end,
         },
         window = {
@@ -64,8 +64,8 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp" }, -- nvim_lsp used as sources
           { name = "luasnip" },  -- snippet engine.
-          { name = "buffer" },   -- id don't know the be honest
-          { name = "path" },
+          -- { name = "buffer" },   -- id don't know the be honest
+          -- { name = "path" },
           -- { name = 'vsnip' },    -- For vsnip users.
         }),
       })
@@ -74,15 +74,15 @@ return {
       cmp.setup.cmdline("/", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
-          { name = "buffer" },
-          { name = "path" },
+          -- { name = "buffer" },
+          -- { name = "path" },
         },
       })
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
           { name = "cmdline" },
-          { name = "path" },
+          -- { name = "path" },
         }),
       })
     end,

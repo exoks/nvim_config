@@ -1,11 +1,11 @@
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣦⣴⣶⣾⣿⣶⣶⣶⣶⣦⣤⣄⠀⠀⠀⠀⠀⠀⠀                                              --
---  ⠀⠀⠀⠀⠀⠀⠀⢠⡶⠻⠛⠟⠋⠉⠀⠈⠤⠴⠶⠶⢾⣿⣿⣿⣷⣦⠄⠀⠀⠀               𓐓  noise.lua 𓐔           --
+--  ⠀⠀⠀⠀⠀⠀⠀⢠⡶⠻⠛⠟⠋⠉⠀⠈⠤⠴⠶⠶⢾⣿⣿⣿⣷⣦⠄⠀⠀⠀         𓐓  nvim-notify.lua 𓐔           --
 --  ⠀⠀⠀⠀⠀⢀⠔⠋⠀⠀⠤⠒⠒⢲⠀⠀⠀⢀⣠⣤⣤⣬⣽⣿⣿⣿⣷⣄⠀⠀                                              --
 --  ⠀⠀⠀⣀⣎⢤⣶⣾⠅⠀⠀⢀⡤⠏⠀⠀⠀⠠⣄⣈⡙⠻⢿⣿⣿⣿⣿⣿⣦⠀   Student: oezzaou <oezzaou@student.1337.ma> --
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
---  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/11/06 14:38:56 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/17 10:17:38 by oezzaou--
+--  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/12/17 10:12:44 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/17 10:22:53 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -13,38 +13,26 @@
 --  ⠀⠀⠀⠀⠀⠘⠄⣀⡀⠸⠓⠀⠀⠀⠠⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              --
 
 return {
-  "folke/noice.nvim",
-  dependecies = {
-    "nvim-lua/plenary.nvim",
-    "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
-  },
+  'rcarriga/nvim-notify',
   config = function()
-    require("noice").setup({
-      lsp = {
-        progress = {
-          enabled = true,
+    require("notify").setup({
+      -- Configuration for nvim-notify
+      require("notify").setup({
+        background_color = "#1e1e1e", -- Set the background color
+        stages = "fade_in_slide_out", -- Animation stage (fade, slide, etc.)
+        timeout = 2000, -- How long to show the notification (in ms)
+        render = "compact", -- How to render the notification (compact, minimal, etc.)
+        icons = {
+          ERROR = "", -- Error icon
+          WARN = "", -- Warning icon
+          INFO = "", -- Info icon
+          DEBUG = "", -- Debug icon
+          TRACE = "✎", -- Trace icon
         },
-        signature = {
-          enabled = true,
-          auto_open = { enabled = true },
-        },
-      },
-      messages = {
-        enabled = true,
-      },
-      -- Add other configurations as needed
-      cmdline = {
-        -- Customize command-line icons
-        format = {
-          cmdline = { icon = " " }, -- Terminal or command icon
-          search_down = { icon = "❯" }, -- Search down
-          search_up = { icon = "❯" }, -- Search up
-          filter = { icon = " " }, -- Filter icon
-          lua = { icon = " " }, -- Lua icon
-          help = { icon = " " }, -- Help icon
-        },
-      },
+      }),
+      level = vim.log.levels.INFO, -- Minimum level of notifications to show
     })
-  end,
+    -- Set nvim-notify as the default notification provider
+    vim.notify = require("notify")
+  end
 }
