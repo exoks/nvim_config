@@ -5,13 +5,14 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/11/06 14:38:29 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/17 20:09:53 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/19 18:37:32 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
 --  ⠀⠀⠀⠀⠀⡄⠀⠀⠀⠘⢧⡀⠀⠀⠸⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠐⠋⠀⠀⠀                     𓄂 oussama ezzaou𓆃  --
 --  ⠀⠀⠀⠀⠀⠘⠄⣀⡀⠸⠓⠀⠀⠀⠠⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              --
 
+-- ====<[ Toggleterm: config ]>===================================================
 return {
   {
     'akinsho/toggleterm.nvim',
@@ -23,16 +24,19 @@ return {
         direction = "float",      -- Default terminal direction
         insert_mappings = true,
         float_opts = {
-          border = "none", -- Border style for floating terminal
-          winblend = 35,      -- Transparency level
+          border = "curved", -- Border style for floating terminal
+          -- winblend = 35,      -- Transparency level
           height = 40,
-          width = 120,
+          width = 100,
         },
       })
     end,
   },
 }
--- Key mappings for different terminal directions
--- vim.keymap.set('n', '<leader>h', ':ToggleTerm direction=horizontal size=15<CR>', { noremap = true, silent = true })
--- vim.keymap.set('n', '<leader>v', ':ToggleTerm direction=vertical size=40<CR>', { noremap = true, silent = true })
--- vim.keymap.set('n', '<leader>tt', ':ToggleTerm direction=tab<CR>', { noremap = true, silent = true })
+
+-- WARNING:
+-- winblend my cause some problems when setting it with colorscheme Transparency
+-- my case: background color changed bzf of the confilict between colorscheme
+-- transparency & winblend (float toggle transperancy)
+
+-- =============================================================================

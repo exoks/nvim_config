@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/12/17 09:28:42 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/17 12:14:14 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/19 13:21:30 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -33,12 +33,12 @@ return {
           color = "error", -- can be a hex color, or a named color (see below)
           alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "FAILED", "ERROR", },
         },
-        TODO = { icon = " ", color = "info", alt = { "INFO", "CONCLUSION", "SUCCESS", "PASSED" } },
-        HACK = { icon = " ", color = "warning", alt = { "HACK", "TIP", "TRICK", "HINT" } },
-        WARN = { icon = " ", color = "warning", alt = { "WARNING", } },
-        PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE", "WAIT" } },
-        NOTE = { icon = " ", color = "hint", alt = { "NOTE", } },
-        TEST = { icon = " ", color = "test", alt = { "TESTING", } },
+        TODO = { icon = "", color = "info", alt = { "INFO", "CONCLUSION", "SUCCESS", "PASSED" } },
+        HACK = { icon = "", color = "warning", alt = { "HACK", "TIP", "TRICK", "HINT" } },
+        WARN = { icon = "", color = "warning", alt = { "WARNING", } },
+        PERF = { icon = "", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE", "WAIT" } },
+        NOTE = { icon = "", color = "hint", alt = { "NOTE", } },
+        TEST = { icon = "", color = "test", alt = { "TESTING", } },
       },
       search = {
         -- regex that will be used to match keywords.

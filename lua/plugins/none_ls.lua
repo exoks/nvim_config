@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 202411/06 14:39:02 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/16 22:07:56 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/19 13:56:40 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -21,21 +21,7 @@ return {
       -- [[ Put the var into a local var ]]--
       local null_ls = require("null-ls")
       null_ls.setup({
-        -- ensure_installed = {
-        --   --"clangd",
-        --   -- formatter for lua
-        --   "stylua",
-        --   -- linter for python
-        --   "pylint",
-        --   -- formatter for html
-        --   "prettier",
-        --   -- linter for html
-        --   "markuplint",
-        -- },
-        --
-        -- sources = {
-        -- [[ adding the list of linter & formatter, use Mason to install them ]]--
-        -- [ lua ] --
+        -- NOTE: [ lua ] --
         null_ls.builtins.formatting.stylua,
 
         -- null_ls.builtins.completion.spell,
@@ -65,8 +51,8 @@ return {
         -- [[ js/ts/html ]] --
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.diagnostics.markuplint,
-        null_ls.builtins.formatting.djlint,
-        -- null_ls.builtins.diagnostics.eslint_d,
+        -- null_ls.builtins.formatting.djlint,
+        -- null_ls.builtins.diagnostics.clang_format,
         -- null_ls.builtins.code_actions.eslint_d,
         -- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
         debug = true, -- Add debug mode to help identify issues

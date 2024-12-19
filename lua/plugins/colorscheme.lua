@@ -5,14 +5,14 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/11/06 14:43:44 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/17 20:08:44 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/19 18:09:11 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                     𓆩♕𓆪              --
 --  ⠀⠀⠀⠀⠀⡄⠀⠀⠀⠘⢧⡀⠀⠀⠸⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠐⠋⠀⠀⠀             𓄂 oussama ezzaou𓆃          --
 --  ⠀⠀⠀⠀⠀⠘⠄⣀⡀⠸⠓⠀⠀⠀⠠⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              --
 
--- download colorschemes as plugins --
+-- ====<[ colorsheme: config ]>================================================
 return {
   -- ===<[ tokyonight config: ]>============================
   "folke/tokyonight.nvim",
@@ -21,24 +21,15 @@ return {
   opts = {},
   transparent = true,
   config = function()
+    require("tokyonight").setup({
+      transparent = true,         -- Enables transparency for the main editor
+      styles = {
+        sidebars = "transparent", -- Transparent background for sidebars like NvimTree
+        floats = "transparent",   -- Transparent background for floating windows
+      },
+    })
     vim.cmd.colorscheme("tokyonight-night")
-    vim.api.nvim_set_keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>1', ':BufferLineGoToBuffer 1<CR>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>2', ':BufferLineGoToBuffer 2<CR>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>3', ':BufferLineGoToBuffer 3<CR>', { noremap = true, silent = true })
   end,
-  -- config attr get's executed once the plugin is loaded
-  -- activate the colorscheme --
-  -- "morhetz/gruvbox",
-  -- "Mofiqul/dracula.nvim",
-  -- "bluz71/vim-moonfly-colors",
-  -- name = "moonfly",
-  -- lazy = false,
-  -- priority = 1000,
-  -- "catppuccin/nvim",
-  -- name = "catppuccin",
-  -- priority = 1000,
   -- ===<[ solarized-osaka config: ]>=======================
   -- "craftzdog/solarized-osaka.nvim",
   -- lazy = false,
@@ -54,4 +45,6 @@ return {
 
 -- CONCLUSION:
 -- catppuccin does not support the Macos terminal
--- it only support iterm & pay attention to the config file
+-- it only supports iterm, !pay attention to config file
+
+-- ============================================================================
