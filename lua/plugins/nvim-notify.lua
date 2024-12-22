@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/12/17 10:12:44 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/20 19:00:26 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/22 16:41:44 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -17,19 +17,19 @@ return {
   config = function()
     require("notify").setup({
       -- Configuration for nvim-notify
-      require("notify").setup({
-        background_color = "none", -- Set the background color
-        stages = "fade_in_slide_out", -- Animation stage (fade, slide, static, fade_in_slide_out)
-        timeout = 1000, -- How long to show the notification (in ms)
-        render = "default", -- How to render the notification (compact, minimal, simple, default)
-        icons = {
-          ERROR = " ", -- Error icon
-          WARN = " ", -- Warning icon
-          INFO = " ", -- Info icon
-          DEBUG = " ", -- Debug icon
-          TRACE = "✎ ", -- Trace icon
-        },
-      }),
+      max_width = 35, -- Set the maximum width of the notification window
+      max_height = 5, -- Set the maximum height of the notification window
+      background_color = "none", -- Set the background color
+      stages = "fade_in_slide_out", -- Animation stage (fade, slide, static, fade_in_slide_out)
+      timeout = 1000, -- How long to show the notification (in ms)
+      render = "default", -- How to render the notification (compact, minimal, simple, default)
+      icons = {
+        ERROR = " ", -- Error icon
+        WARN = " ", -- Warning icon
+        INFO = " ", -- Info icon
+        DEBUG = " ", -- Debug icon
+        TRACE = "✎ ", -- Trace icon
+      },
       level = vim.log.levels.INFO, -- Minimum level of notifications to show
     })
     -- Set nvim-notify as the default notification provider
