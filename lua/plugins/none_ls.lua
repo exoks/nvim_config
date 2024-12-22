@@ -5,66 +5,44 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 202411/06 14:39:02 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/19 13:56:40 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/22 15:01:33 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
 --  ⠀⠀⠀⠀⠀⡄⠀⠀⠀⠘⢧⡀⠀⠀⠸⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠐⠋⠀⠀⠀                     𓄂 oussama ezzaou𓆃  --
 --  ⠀⠀⠀⠀⠀⠘⠄⣀⡀⠸⠓⠀⠀⠀⠠⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              --
 
+-- ====<[ none_ls: config ]>====================================================
 -- [[ great pluging for management of linter & formatter as part from lsp ]]
 return {
   {
 
     "nvimtools/none-ls.nvim",
     config = function()
-      -- [[ Put the var into a local var ]]--
       local null_ls = require("null-ls")
       null_ls.setup({
-        -- NOTE: [ lua ] --
+        -- INFO::> lua 
         null_ls.builtins.formatting.stylua,
-
-        -- null_ls.builtins.completion.spell,
-        -- [[ python ]]--
-        -- null_ls.builtins.diagnostics.pylint.with({
-        --   extra_args = {
-        --     "--load-plugins=pylint_django",
-        --     "--help-msg=django-not-configured",
-        --     "--max-line-length=80",
-        --   },
-        -- }),
-        -- Black formatter (auto-formats code)
-        -- null_ls.builtins.formatting.black.with({
-        --   extra_args = { "--line-length", "80" }, -- Customize black's line length as well
-        -- }),
-        --[[ html/css ]]
-        -- dak l mouchkil l austori: sbabo l error li taywqa3 fi loading dyal cpplint ^
-        -- these linter does not work for me
-        -- null_ls.builtins.diagnostics.htmlhint,
-        -- null_ls.builtins.diagnostics.stlelint,
-
-        -- [[ C/C++ ]]--
-        -- for c/c++ i'm using the built-in linter & formater of clangd
-        -- null_ls.builtins.formatting.clang_format,
-        -- null_ls.builtins.diagnostics.cpplint,
-
-        -- [[ js/ts/html ]] --
+        -- INFO::> python
+        null_ls.builtins.diagnostics.pylint.with({
+          extra_args = {
+            "--load-plugins=pylint_django",
+            "--help-msg=django-not-configured",
+            "--max-line-length=80",
+          },
+        }),
+        -- INFO::> js/html 
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.diagnostics.markuplint,
-        -- null_ls.builtins.formatting.djlint,
-        -- null_ls.builtins.diagnostics.clang_format,
-        -- null_ls.builtins.code_actions.eslint_d,
-        -- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
-        debug = true, -- Add debug mode to help identify issues
-        -- },
+        debug = true,
       })
       vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, {})
     end,
   },
 }
-
---[[ Questions ]]
+-- =============================================================================
+-- QUESTION: 
 -- the lsp has it's builting formater & linter but none-ls allows use to use external ones
---what is the diff between linter & formater ?
---linter : is tool that detect the errors in logic of code & suggest code fixes (katchod l machakil li endk fi l code o katqadhom)
---formatter: is a tool to check & reformat the code without changing the runtime behavior of the code (khedmatha sysntax language kat9ado)
+-- what is the diff between linter & formater ?
+-- linter : is tool that detect the errors in logic of code & suggest code fixes (katchod l machakil li endk fi l code o katqadhom)
+-- formatter: is a tool to check & reformat the code without changing the runtime behavior of the code (khedmatha sysntax language kat9ado)
