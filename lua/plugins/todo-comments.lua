@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/12/17 09:28:42 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2024/12/23 08:02:59 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/02/14 10:01:13 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -26,20 +26,22 @@ return {
         info = { "DiagnosticInfo", "#2563EB" },
         hint = { "DiagnosticHint", "#10B981" },
         default = { "Identifier", "#7C3AED" },
-        test = { "Identifier", "#FF00FF" }
+        test = { "Identifier", "#FF00FF" },
       },
       keywords = {
         FIX = {
           icon = " ", -- icon used for the sign, and in search results
           color = "error", -- can be a hex color, or a named color (see below)
-          alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "FAILED", "ERROR", "DEBUG"},
+         alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "FAILED", "ERROR", },
         },
-        TODO = { icon = "", color = "info", alt = { "INFO", "CONCLUSION", "SUCCESS", "PASSED" } },
+        TODO = { icon = "", color = "info", alt = { "INFO", "CONCLUSION", "SUCCESS", "PASSED",} },
         HACK = { icon = "", color = "warning", alt = { "HACK", "TIP", "TRICK", "HINT" } },
-        WARN = { icon = "", color = "warning", alt = { "WARNING", } },
+        WARN = { icon = "", color = "warning", alt = { "WARNING", "QUESTION"} },
         PERF = { icon = "", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE", "WAIT" } },
-        NOTE = { icon = "", color = "hint", alt = { "NOTE", } },
-        TEST = { icon = "", color = "test", alt = { "TESTING", } },
+        NOTE = { icon = "", color = "hint", alt = { "NOTE", "SOLUTION"} },
+        TEST = { icon = "", color = "test", alt = { "TESTING" } },
+        DEfAULT = { icon = "", color = "default", alt = { "TESTING", "REVISION", "EXPLANATION"} },
+        -- SOLUTION:
       },
       search = {
         -- regex that will be used to match keywords.
